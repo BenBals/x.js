@@ -59,6 +59,25 @@ x = function(s) {
     }
     return newHtml;
   };
+  _.css = function(key, value, index) {
+    var element, __element__, __elements__, _i, _len, _results;
+    if (index === void 0) {
+      __elements__ = _.es();
+      _results = [];
+      for (_i = 0, _len = __elements__.length; _i < _len; _i++) {
+        element = __elements__[_i];
+        _results.push(element.style[key] = value);
+      }
+      return _results;
+    } else {
+      if (index >= _.elements().length || index < 0) {
+        console.warn("You provided an index (" + index + ") that is out of range to a x.css. The selector was " + selector);
+        return null;
+      }
+      __element__ = _.es()[index];
+      return __element__.style[key] = value;
+    }
+  };
   _.html = function(newHtml, index) {
     var element, __element__, __elements__, _i, _len;
     if (newHtml !== void 0 && typeof newHtml !== "number") {

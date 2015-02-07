@@ -63,6 +63,21 @@ x = (s) ->
 
     return newHtml
 
+  _.css = (key, value, index) ->
+    if index == undefined
+      __elements__ = _.es()
+      for element in __elements__
+        element.style[key] = value
+    else
+      # check if index is in range
+      if index >= _.elements().length or index < 0
+        console.warn "You provided an index (#{index}) that is out of range to a x.css. The selector was #{selector}"
+        return null
+      __element__ = _.es()[index]
+      __element__.style[key] = value
+
+    
+
 
   _.html = (newHtml, index) ->
     # check if newHtml was provided

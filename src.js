@@ -78,6 +78,24 @@ x = function(s) {
       return __element__.style[key] = value;
     }
   };
+  _.each = function(customFunciton, index) {
+    var element, __element__, __elements__, _i, _len;
+    if (index === void 0) {
+      __elements__ = _.es();
+      for (_i = 0, _len = __elements__.length; _i < _len; _i++) {
+        element = __elements__[_i];
+        customFunciton(element);
+      }
+    } else {
+      if (index >= _.elements().length || index < 0) {
+        console.warn("You provided an index (" + index + ") that is out of range to a x.each. The selector was " + selector);
+        return null;
+      }
+      __element__ = _.es()[index];
+      customFunciton(__element__);
+    }
+    return customFunciton;
+  };
   _.html = function(newHtml, index) {
     var element, __element__, __elements__, _i, _len;
     if (newHtml !== void 0 && typeof newHtml !== "number") {

@@ -65,6 +65,21 @@ x = (s) ->
 
   _.css = (key, value, index) ->
     if index == undefined
+
+      if typeof(key) == 'object'
+        if value == undefined
+          console.log "We have a object and no index"
+          __elements__ = _.es()
+          console.log "These are the elements"
+          console.log __elements__
+          for element in __elements__
+            console.log "The current element is"
+            console.log element
+            for __key__, __value__ of key
+              if key.hasOwnProperty(__key__)
+                console.log "css: #{__key__}: #{__value__}"
+                element.style[__key__] = __value__
+
       __elements__ = _.es()
       for element in __elements__
         element.style[key] = value

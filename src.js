@@ -60,12 +60,32 @@ x = function(s) {
     return newHtml;
   };
   _.css = function(key, value, index) {
-    var element, __element__, __elements__, _i, _len, _results;
+    var element, __element__, __elements__, __key__, __value__, _i, _j, _len, _len1, _results;
     if (index === void 0) {
+      if (typeof key === 'object') {
+        if (value === void 0) {
+          console.log("We have a object and no index");
+          __elements__ = _.es();
+          console.log("These are the elements");
+          console.log(__elements__);
+          for (_i = 0, _len = __elements__.length; _i < _len; _i++) {
+            element = __elements__[_i];
+            console.log("The current element is");
+            console.log(element);
+            for (__key__ in key) {
+              __value__ = key[__key__];
+              if (key.hasOwnProperty(__key__)) {
+                console.log("css: " + __key__ + ": " + __value__);
+                element.style[__key__] = __value__;
+              }
+            }
+          }
+        }
+      }
       __elements__ = _.es();
       _results = [];
-      for (_i = 0, _len = __elements__.length; _i < _len; _i++) {
-        element = __elements__[_i];
+      for (_j = 0, _len1 = __elements__.length; _j < _len1; _j++) {
+        element = __elements__[_j];
         _results.push(element.style[key] = value);
       }
       return _results;

@@ -2,13 +2,13 @@ x = (s) ->
 
   _ = {}
 
-  selector = s
+  _.selector = s
 
   _.element = ->
-    return document.querySelector(selector)
+    return document.querySelector(_.selector)
 
   _.elements = ->
-    return document.querySelectorAll(selector)
+    return document.querySelectorAll(_.selector)
 
   _.e = _.element
   _.es = _.elements
@@ -33,7 +33,7 @@ x = (s) ->
 
       # check if index is in range
       if index >= _.elements().length or index < 0
-        console.warn "You provided an index (#{index}) that is out of range to a x.addClass. The selector was #{selector}"
+        console.warn "You provided an index (#{index}) that is out of range to a x.addClass. The selector was #{_.selector}"
         return null
 
       #selecting element at index
@@ -45,7 +45,7 @@ x = (s) ->
         __element__.className += " " + newClass
 
     # returning which class was added
-    return newClass
+    return this
 
   _.append = (newHtml, index) ->
     if index == undefined
@@ -55,13 +55,13 @@ x = (s) ->
     else
       # check if index is in range
       if index >= _.elements().length or index < 0
-        console.warn "You provided an index (#{index}) that is out of range to a x.append. The selector was #{selector}"
+        console.warn "You provided an index (#{index}) that is out of range to a x.append. The selector was #{_.selector}"
         return null
 
       __element__ = _.es()[index]
       __element__.innerHTML += newHtml
 
-    return newHtml
+    return this
 
   _.css = (key, value, index) ->
     if index == undefined
@@ -86,10 +86,13 @@ x = (s) ->
     else
       # check if index is in range
       if index >= _.elements().length or index < 0
-        console.warn "You provided an index (#{index}) that is out of range to a x.css. The selector was #{selector}"
+        console.warn "You provided an index (#{index}) that is out of range to a x.css. The selector was #{_.selector}"
         return null
       __element__ = _.es()[index]
       __element__.style[key] = value
+
+    return this
+
 
   
   _.each = (customFunciton, index) ->
@@ -99,13 +102,13 @@ x = (s) ->
         customFunciton(element)
     else
       if index >= _.elements().length or index < 0
-        console.warn "You provided an index (#{index}) that is out of range to a x.each. The selector was #{selector}"
+        console.warn "You provided an index (#{index}) that is out of range to a x.each. The selector was #{_.selector}"
         return null
 
       __element__ = _.es()[index]
       customFunciton(__element__)
 
-    return customFunciton
+    return this
 
 
   _.html = (newHtml, index) ->
@@ -118,7 +121,7 @@ x = (s) ->
           element.innerHTML = newHtml
       else
         if index >= _.elements().length or index < 0
-          console.warn "You provided an index (#{index}) that is out of range to a x.html. The selector was #{selector}"
+          console.warn "You provided an index (#{index}) that is out of range to a x.html. The selector was #{_.selector}"
           return null
         __element__ = _.es()[index]
         __element__.innerHTML = newHtml
@@ -129,7 +132,7 @@ x = (s) ->
         return _.e().innerHTML
       else
         if newHtml >= _.elements().length or newHtml < 0
-          console.warn "You provided an index (#{newHtml}) that is out of range to a x.html. The selector was #{selector}"
+          console.warn "You provided an index (#{newHtml}) that is out of range to a x.html. The selector was #{_.selector}"
           return null
         return _.es()[newHtml].innerHTML
 
@@ -147,13 +150,13 @@ x = (s) ->
 
       # check if index is in range
       if index >= _.elements().length or index < 0
-        console.warn "You provided an index (#{index}) that is out of range to a x.removeAllClasses. The selector was #{selector}"
+        console.warn "You provided an index (#{index}) that is out of range to a x.removeAllClasses. The selector was #{_.selector}"
         return null
       # selecting the element
       __element__ = _.elements()[index]
       __element__.className = ""
 
-    return ""
+    return this
 
 
   _.removeClass = (oldClass, index) ->
@@ -170,7 +173,7 @@ x = (s) ->
 
       # check if index is in range
       if index >= _.elements().length or index < 0
-        console.warn "You provided an index (#{index}) that is out of range to a x.removeClass. The selector was #{selector}"
+        console.warn "You provided an index (#{index}) that is out of range to a x.removeClass. The selector was #{_.selector}"
         return null
 
       # selecting the element
@@ -179,7 +182,7 @@ x = (s) ->
       __element__.className = __element__.className.split(oldClass).join('').split('  ').join(' ').trim()
 
     #returning which class was removed
-    return oldClass
+    return this
 
 
 

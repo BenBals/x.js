@@ -1,14 +1,14 @@
 var x;
 
 x = function(s) {
-  var _, selector;
+  var _;
   _ = {};
-  selector = s;
+  _.selector = s;
   _.element = function() {
-    return document.querySelector(selector);
+    return document.querySelector(_.selector);
   };
   _.elements = function() {
-    return document.querySelectorAll(selector);
+    return document.querySelectorAll(_.selector);
   };
   _.e = _.element;
   _.es = _.elements;
@@ -28,7 +28,7 @@ x = function(s) {
       }
     } else {
       if (index >= _.elements().length || index < 0) {
-        console.warn("You provided an index (" + index + ") that is out of range to a x.addClass. The selector was " + selector);
+        console.warn("You provided an index (" + index + ") that is out of range to a x.addClass. The selector was " + _.selector);
         return null;
       }
       __element__ = _.elements()[index];
@@ -38,7 +38,7 @@ x = function(s) {
         __element__.className += " " + newClass;
       }
     }
-    return newClass;
+    return this;
   };
   _.append = function(newHtml, index) {
     var __element__, __elements__, element, i, len;
@@ -50,13 +50,13 @@ x = function(s) {
       }
     } else {
       if (index >= _.elements().length || index < 0) {
-        console.warn("You provided an index (" + index + ") that is out of range to a x.append. The selector was " + selector);
+        console.warn("You provided an index (" + index + ") that is out of range to a x.append. The selector was " + _.selector);
         return null;
       }
       __element__ = _.es()[index];
       __element__.innerHTML += newHtml;
     }
-    return newHtml;
+    return this;
   };
   _.css = function(key, value, index) {
     var __element__, __elements__, __key__, __value__, element, i, j, len, len1, results;
@@ -90,7 +90,7 @@ x = function(s) {
       return results;
     } else {
       if (index >= _.elements().length || index < 0) {
-        console.warn("You provided an index (" + index + ") that is out of range to a x.css. The selector was " + selector);
+        console.warn("You provided an index (" + index + ") that is out of range to a x.css. The selector was " + _.selector);
         return null;
       }
       __element__ = _.es()[index];
@@ -107,7 +107,7 @@ x = function(s) {
       }
     } else {
       if (index >= _.elements().length || index < 0) {
-        console.warn("You provided an index (" + index + ") that is out of range to a x.each. The selector was " + selector);
+        console.warn("You provided an index (" + index + ") that is out of range to a x.each. The selector was " + _.selector);
         return null;
       }
       __element__ = _.es()[index];
@@ -126,7 +126,7 @@ x = function(s) {
         }
       } else {
         if (index >= _.elements().length || index < 0) {
-          console.warn("You provided an index (" + index + ") that is out of range to a x.html. The selector was " + selector);
+          console.warn("You provided an index (" + index + ") that is out of range to a x.html. The selector was " + _.selector);
           return null;
         }
         __element__ = _.es()[index];
@@ -138,7 +138,7 @@ x = function(s) {
         return _.e().innerHTML;
       } else {
         if (newHtml >= _.elements().length || newHtml < 0) {
-          console.warn("You provided an index (" + newHtml + ") that is out of range to a x.html. The selector was " + selector);
+          console.warn("You provided an index (" + newHtml + ") that is out of range to a x.html. The selector was " + _.selector);
           return null;
         }
         return _.es()[newHtml].innerHTML;
@@ -155,7 +155,7 @@ x = function(s) {
       }
     } else {
       if (index >= _.elements().length || index < 0) {
-        console.warn("You provided an index (" + index + ") that is out of range to a x.removeAllClasses. The selector was " + selector);
+        console.warn("You provided an index (" + index + ") that is out of range to a x.removeAllClasses. The selector was " + _.selector);
         return null;
       }
       __element__ = _.elements()[index];
@@ -173,7 +173,7 @@ x = function(s) {
       }
     } else {
       if (index >= _.elements().length || index < 0) {
-        console.warn("You provided an index (" + index + ") that is out of range to a x.removeClass. The selector was " + selector);
+        console.warn("You provided an index (" + index + ") that is out of range to a x.removeClass. The selector was " + _.selector);
         return null;
       }
       __element__ = _.elements()[index];

@@ -59,7 +59,7 @@ x = function(s) {
     return this;
   };
   _.css = function(key, value, index) {
-    var __element__, __elements__, __key__, __value__, element, i, j, len, len1, results;
+    var __element__, __elements__, __key__, __value__, element, i, j, len, len1;
     if (index === void 0) {
       if (typeof key === 'object') {
         if (value === void 0) {
@@ -82,20 +82,19 @@ x = function(s) {
         }
       }
       __elements__ = _.es();
-      results = [];
       for (j = 0, len1 = __elements__.length; j < len1; j++) {
         element = __elements__[j];
-        results.push(element.style[key] = value);
+        element.style[key] = value;
       }
-      return results;
     } else {
       if (index >= _.elements().length || index < 0) {
         console.warn("You provided an index (" + index + ") that is out of range to a x.css. The selector was " + _.selector);
         return null;
       }
       __element__ = _.es()[index];
-      return __element__.style[key] = value;
+      __element__.style[key] = value;
     }
+    return this;
   };
   _.each = function(customFunciton, index) {
     var __element__, __elements__, element, i, len;
@@ -113,7 +112,7 @@ x = function(s) {
       __element__ = _.es()[index];
       customFunciton(__element__);
     }
-    return customFunciton;
+    return this;
   };
   _.html = function(newHtml, index) {
     var __element__, __elements__, element, i, len;
@@ -132,7 +131,7 @@ x = function(s) {
         __element__ = _.es()[index];
         __element__.innerHTML = newHtml;
       }
-      return newHtml;
+      return this;
     } else {
       if (newHtml === void 0) {
         return _.e().innerHTML;
@@ -143,6 +142,13 @@ x = function(s) {
         }
         return _.es()[newHtml].innerHTML;
       }
+    }
+  };
+  _.ready = function(fn) {
+    if (document.readyState !== 'loading') {
+      return fn();
+    } else {
+      return document.addEventListener('DOMContentLoaded', fn);
     }
   };
   _.removeAllClasses = function(index) {
@@ -161,7 +167,7 @@ x = function(s) {
       __element__ = _.elements()[index];
       __element__.className = "";
     }
-    return "";
+    return this;
   };
   _.removeClass = function(oldClass, index) {
     var __element__, __elements__, element, i, len;
@@ -179,7 +185,7 @@ x = function(s) {
       __element__ = _.elements()[index];
       __element__.className = __element__.className.split(oldClass).join('').split('  ').join(' ').trim();
     }
-    return oldClass;
+    return this;
   };
   return _;
 };

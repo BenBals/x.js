@@ -23,6 +23,9 @@ iterates over the elements and passes them as an js dom element obj (as returned
 ### .html ```(newHtml, index) -> innerHTML``` (only returns when no newHtml is provided)
 sets the ```innerHTML``` of the element(s) or responds with the ```innerHTML``` if no ```newHtml``` is provided
 
+### .ready ```(fn)```
+calls ```fn``` function, when dom is loaded (selector is irrelevant), not chainable
+
 ### .removeAllClasses ```(index)```
 removes all classes of the element(s)
 

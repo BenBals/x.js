@@ -136,6 +136,12 @@ x = (s) ->
           return null
         return _.es()[newHtml].innerHTML
 
+  _.ready = (fn) ->
+    if document.readyState != 'loading'
+      fn()
+    else
+      document.addEventListener('DOMContentLoaded', fn)
+
 
   _.removeAllClasses = (index) ->
     # checking if an index was provided

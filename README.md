@@ -16,7 +16,7 @@ adds class ```newClass```
 appends ```newHtml``` to the end of the elements
 
 ### .css ```(key, value[, index]) or (obj[, index])```
-sets the ```key``` css property to value OR sets all key value pairs in obj as css key value pairs
+sets the ```key``` css property to value OR sets all key value pairs in ```obj``` as css key value pairs
 
 ### .each ```(customFunction[, index])```
 iterates over the elements and passes them as an js dom element obj (as returned by document.querySelector) to the function as the first argument

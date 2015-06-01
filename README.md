@@ -25,6 +25,7 @@ iterates over the elements and passes them as an js dom element obj (as returned
 sets the ```innerHTML``` of the element(s) or responds with the ```innerHTML``` if no ```newHtml``` is provided
 
 ### .on ```(eventName, fn[, index])
+calls ```fn``` (first arg is event obj) when event ```eventName``` happens
 
 ### .ready ```(fn)```
 calls ```fn``` function, when dom is loaded (selector is irrelevant), not chainable

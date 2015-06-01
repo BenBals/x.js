@@ -193,6 +193,31 @@ x = function(s) {
     }
     return this;
   };
+  _.toggle = function(index) {
+    var __elements__, element, i, len, toggle;
+    toggle = function(e) {
+      console.log(getComputedStyle(e).display);
+      if (getComputedStyle(e).display === 'none') {
+        return e.style.display = 'block';
+      } else {
+        return e.style.display = 'none';
+      }
+    };
+    if (typeof index === 'number') {
+      if (index >= _.elements().length || index < 0) {
+        console.warn("You provided an index (" + index + ") that is out of range to a x.toggle. The selector was " + _.selector);
+        return null;
+      }
+      toggle(_.es()[index]);
+    } else {
+      __elements__ = _.es();
+      for (i = 0, len = __elements__.length; i < len; i++) {
+        element = __elements__[i];
+        toggle(element);
+      }
+    }
+    return _;
+  };
   _.val = function(newVal, index) {
     var __element__, __elements__, element, i, j, len, len1, returnArr;
     if (newVal !== void 0 && typeof newVal !== "number") {

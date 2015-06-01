@@ -111,6 +111,7 @@ x = (s) ->
     return this
 
 
+
   _.html = (newHtml, index) ->
     # check if newHtml was provided
     if newHtml != undefined and typeof(newHtml) != "number"
@@ -194,6 +195,28 @@ x = (s) ->
 
     #returning which class was removed
     return this
+
+  _.toggle = (index) ->
+
+    toggle = (e) ->
+      console.log getComputedStyle(e).display
+      if getComputedStyle(e).display is 'none'
+        e.style.display = 'block'
+      else
+        e.style.display = 'none'
+
+    if typeof(index) is 'number'
+      if index >= _.elements().length or index < 0
+        console.warn "You provided an index (#{index}) that is out of range to a x.toggle. The selector was #{_.selector}"
+        return null
+      toggle(_.es()[index])
+    else
+      __elements__ = _.es()
+      for element in __elements__
+        toggle(element)
+
+    return _
+
 
   _.val = (newVal, index) ->
     # check if newVal was provided

@@ -33,5 +33,8 @@ removes all classes of the element(s)
 ### .removeClass ```(oldClass, index)```
 removes the class ```oldClass``` form the element(s)
 
+### .toggle ```(index)```
+toggles between ```display: none``` and ```display: block```
+
 ### .val ```(newVal, index)``` -> value (only returns when no newVal is provided)
 sets value of element(s) to ```newVal``` if provided otherwise returns the value of the element(s)

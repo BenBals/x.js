@@ -150,6 +150,26 @@ x = function(s) {
       }
     }
   };
+  _.on = function(eventName, fn, index) {
+    var __elements__, addEvL, element, i, len;
+    addEvL = function(element) {
+      return element.addEventListener(eventName, fn, false);
+    };
+    if (index !== void 0) {
+      if (index >= _.elements().length || index < 0) {
+        console.warn("You provided an index (" + index + ") that is out of range to a x.on. The selector was " + _.selector);
+        return null;
+        addEvL(_.es()[index]);
+      }
+    } else {
+      __elements__ = _.es();
+      for (i = 0, len = __elements__.length; i < len; i++) {
+        element = __elements__[i];
+        addEvL(element);
+      }
+    }
+    return this;
+  };
   _.ready = function(fn) {
     if (document.readyState !== 'loading') {
       return fn();

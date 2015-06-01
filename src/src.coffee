@@ -142,6 +142,24 @@ x = (s) ->
           return null
         return _.es()[newHtml].innerHTML
 
+  _.on = (eventName, fn, index) ->
+    addEvL = (element) ->
+      element.addEventListener(eventName, fn, false)
+
+    if index != undefined
+      if index >= _.elements().length or index < 0
+        console.warn "You provided an index (#{index}) that is out of range to a x.on. The selector was #{_.selector}"
+        return null
+        addEvL(_.es()[index])
+    else
+      __elements__ = _.es()
+      for element in __elements__
+        addEvL(element)
+
+    return this
+
+
+
   _.ready = (fn) ->
     if document.readyState != 'loading'
       fn()

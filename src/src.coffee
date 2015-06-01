@@ -129,7 +129,12 @@ x = (s) ->
 
     else
       if newHtml == undefined
-        return _.e().innerHTML
+        returnArr = []
+        __elements__ = _.es()
+        # iterate over all elements and append the values to returnArr
+        for element in __elements__
+          returnArr.push(element.innerHTML)
+        return returnArr
       else
         if newHtml >= _.elements().length or newHtml < 0
           console.warn "You provided an index (#{newHtml}) that is out of range to a x.html. The selector was #{_.selector}"
@@ -189,6 +194,37 @@ x = (s) ->
 
     #returning which class was removed
     return this
+
+  _.val = (newVal, index) ->
+    # check if newVal was provided
+    if newVal != undefined and typeof(newVal) != "number"
+      # check if an index was provided
+      if index == undefined
+        __elements__ = _.es()
+        for element in __elements__
+          element.value = newVal
+      else
+        if index >= _.elements().length or index < 0
+          console.warn "You provided an index (#{index}) that is out of range to a x.val. The selector was #{_.selector}"
+          return null
+        __element__ = _.es()[index]
+        __element__.vaule = newVal
+      
+      return this
+
+    else
+      if newVal == undefined
+        returnArr = []
+        __elements__ = _.es()
+        # iterate over all elements and append the values to returnArr
+        for element in __elements__
+          returnArr.push(element.value)
+        return returnArr
+      else
+        if newVal >= _.elements().length or newVal < 0
+          console.warn "You provided an index (#{newVal}) that is out of range to a x.val. The selector was #{_.selector}"
+          return null
+        return _.es()[newVal].value
 
 
 

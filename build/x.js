@@ -115,7 +115,7 @@ x = function(s) {
     return this;
   };
   _.html = function(newHtml, index) {
-    var __element__, __elements__, element, i, len;
+    var __element__, __elements__, element, i, j, len, len1, returnArr;
     if (newHtml !== void 0 && typeof newHtml !== "number") {
       if (index === void 0) {
         __elements__ = _.es();
@@ -134,7 +134,13 @@ x = function(s) {
       return this;
     } else {
       if (newHtml === void 0) {
-        return _.e().innerHTML;
+        returnArr = [];
+        __elements__ = _.es();
+        for (j = 0, len1 = __elements__.length; j < len1; j++) {
+          element = __elements__[j];
+          returnArr.push(element.innerHTML);
+        }
+        return returnArr;
       } else {
         if (newHtml >= _.elements().length || newHtml < 0) {
           console.warn("You provided an index (" + newHtml + ") that is out of range to a x.html. The selector was " + _.selector);
@@ -186,6 +192,42 @@ x = function(s) {
       __element__.className = __element__.className.split(oldClass).join('').split('  ').join(' ').trim();
     }
     return this;
+  };
+  _.val = function(newVal, index) {
+    var __element__, __elements__, element, i, j, len, len1, returnArr;
+    if (newVal !== void 0 && typeof newVal !== "number") {
+      if (index === void 0) {
+        __elements__ = _.es();
+        for (i = 0, len = __elements__.length; i < len; i++) {
+          element = __elements__[i];
+          element.value = newVal;
+        }
+      } else {
+        if (index >= _.elements().length || index < 0) {
+          console.warn("You provided an index (" + index + ") that is out of range to a x.val. The selector was " + _.selector);
+          return null;
+        }
+        __element__ = _.es()[index];
+        __element__.vaule = newVal;
+      }
+      return this;
+    } else {
+      if (newVal === void 0) {
+        returnArr = [];
+        __elements__ = _.es();
+        for (j = 0, len1 = __elements__.length; j < len1; j++) {
+          element = __elements__[j];
+          returnArr.push(element.value);
+        }
+        return returnArr;
+      } else {
+        if (newVal >= _.elements().length || newVal < 0) {
+          console.warn("You provided an index (" + newVal + ") that is out of range to a x.val. The selector was " + _.selector);
+          return null;
+        }
+        return _.es()[newVal].value;
+      }
+    }
   };
   return _;
 };

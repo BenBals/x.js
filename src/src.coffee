@@ -125,7 +125,7 @@ x = (s) ->
           return null
         __element__ = _.es()[index]
         __element__.innerHTML = newHtml
-      return newHtml
+      return this
 
     else
       if newHtml == undefined

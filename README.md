@@ -21,6 +21,10 @@ sets the ```key``` css property to value OR sets all key value pairs in obj as c
 iterates over the elements and passes them as an js dom element obj (as returned by document.querySelector) to the function as the first argument
 
 ### .html ```(newHtml, index) -> innerHTML``` (only returns when no newHtml is provided)
-sets the innerHTML of the element(s) or responds with the innerHTML if no newHtml is provided
+sets the ```innerHTML``` of the element(s) or responds with the ```innerHTML``` if no ```newHtml``` is provided
 
-### .
+### .removeAllClasses ```(index)```
+removes all classes of the element(s)
+
+### .removeClass ```(oldClass, index)```
+removes the class ```oldClass``` form the element(s)

@@ -69,12 +69,9 @@ x = (s) ->
       if typeof(key) == 'object'
         if value == undefined
           __elements__ = _.es()
-          console.log __elements__
           for element in __elements__
-            console.log element
             for __key__, __value__ of key
               if key.hasOwnProperty(__key__)
-                console.log "css: #{__key__}: #{__value__}"
                 element.style[__key__] = __value__
 
       __elements__ = _.es()
@@ -239,7 +236,6 @@ x = (s) ->
   _.toggle = (index) ->
 
     toggle = (e) ->
-      console.log getComputedStyle(e).display
       if getComputedStyle(e).display is 'none'
         e.style.display = 'block'
       else

@@ -64,14 +64,11 @@ x = function(s) {
       if (typeof key === 'object') {
         if (value === void 0) {
           __elements__ = _.es();
-          console.log(__elements__);
           for (i = 0, len = __elements__.length; i < len; i++) {
             element = __elements__[i];
-            console.log(element);
             for (__key__ in key) {
               __value__ = key[__key__];
               if (key.hasOwnProperty(__key__)) {
-                console.log("css: " + __key__ + ": " + __value__);
                 element.style[__key__] = __value__;
               }
             }
@@ -238,7 +235,6 @@ x = function(s) {
   _.toggle = function(index) {
     var __elements__, element, i, len, toggle;
     toggle = function(e) {
-      console.log(getComputedStyle(e).display);
       if (getComputedStyle(e).display === 'none') {
         return e.style.display = 'block';
       } else {

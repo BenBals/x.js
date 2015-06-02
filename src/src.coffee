@@ -68,12 +68,9 @@ x = (s) ->
 
       if typeof(key) == 'object'
         if value == undefined
-          console.log "We have a object and no index"
           __elements__ = _.es()
-          console.log "These are the elements"
           console.log __elements__
           for element in __elements__
-            console.log "The current element is"
             console.log element
             for __key__, __value__ of key
               if key.hasOwnProperty(__key__)
@@ -148,7 +145,6 @@ x = (s) ->
     request.open('GET', url, true)
 
     request.onload = ->
-      console.log 'this === request: ', this == request
       # check for error
       if this.status >= 200 and this.status < 400
         if success

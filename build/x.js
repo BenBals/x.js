@@ -63,13 +63,10 @@ x = function(s) {
     if (index === void 0) {
       if (typeof key === 'object') {
         if (value === void 0) {
-          console.log("We have a object and no index");
           __elements__ = _.es();
-          console.log("These are the elements");
           console.log(__elements__);
           for (i = 0, len = __elements__.length; i < len; i++) {
             element = __elements__[i];
-            console.log("The current element is");
             console.log(element);
             for (__key__ in key) {
               __value__ = key[__key__];
@@ -155,7 +152,6 @@ x = function(s) {
     request = new XMLHttpRequest();
     request.open('GET', url, true);
     request.onload = function() {
-      console.log('this === request: ', this === request);
       if (this.status >= 200 && this.status < 400) {
         if (success) {
           return success(this);

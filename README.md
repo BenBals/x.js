@@ -21,11 +21,11 @@ sets the ```key``` css property to value OR sets all key value pairs in ```obj``
 ### .each ```(customFunction[, index])```
 iterates over the elements and passes them as an js dom element obj (as returned by document.querySelector) to the function as the first argument
 
-### .httpReq ```(url[, successFn[, problemFn[, errorFn]]]) -> XMLHttpRequest```
-opens a XMLHttpRequest to the specified url. Pass success, problem (reached server, but it returned an error) and error functions. Pass ```false``` if you dont want to specify an function, but you want to specify the next one. if you only pass two functions the second will be used for problem and error. the request obj will be passed to all functions as the first argument.
-
 ### .html ```(newHtml[, index]) [-> innerHTML]``` (only returns when no newHtml is provided)
 sets the ```innerHTML``` of the element(s) or responds with the ```innerHTML``` if no ```newHtml``` is provided
+
+### .httpReq ```(url[, successFn[, problemFn[, errorFn]]]) -> XMLHttpRequest```
+opens a XMLHttpRequest to the specified url. Pass success, problem (reached server, but it returned an error) and error functions. Pass ```false``` if you dont want to specify an function, but you want to specify the next one. if you only pass two functions the second will be used for problem and error. the request obj will be passed to all functions as the first argument.
 
 ### .on ```(eventName, fn[, index])```
 calls ```fn``` (first arg is event obj) when event ```eventName``` happens

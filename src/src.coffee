@@ -110,36 +110,6 @@ x = (s) ->
 
     return this
 
-  _.httpReq = (url, success, problem, error) ->
-    # create and open a new req
-    request = new XMLHttpRequest()
-    request.open('GET', url, true)
-
-    request.onload = ->
-      console.log 'this === request: ', this == request
-      # check for error
-      if this.status >= 200 and this.status < 400
-        if success
-          success(this)
-      else
-        if problem
-          problem(this)
-
-    request.onerror = ->
-      if error
-        error(this)
-      else if !error and problem
-        problem(this)
-
-    request.send()
-
-    return request
-
-
-
-
-
-
 
   _.html = (newHtml, index) ->
     # check if newHtml was provided
@@ -170,6 +140,33 @@ x = (s) ->
           console.warn "You provided an index (#{newHtml}) that is out of range to a x.html. The selector was #{_.selector}"
           return null
         return _.es()[newHtml].innerHTML
+
+
+  _.httpReq = (url, success, problem, error) ->
+    # create and open a new req
+    request = new XMLHttpRequest()
+    request.open('GET', url, true)
+
+    request.onload = ->
+      console.log 'this === request: ', this == request
+      # check for error
+      if this.status >= 200 and this.status < 400
+        if success
+          success(this)
+      else
+        if problem
+          problem(this)
+
+    request.onerror = ->
+      if error
+        error(this)
+      else if !error and problem
+        problem(this)
+
+    request.send()
+
+    return request
+
 
   _.on = (eventName, fn, index) ->
     addEvL = (element) ->

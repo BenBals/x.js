@@ -114,6 +114,32 @@ x = function(s) {
     }
     return this;
   };
+  _.httpReq = function(url, success, problem, error) {
+    var request;
+    request = new XMLHttpRequest();
+    request.open('GET', url, true);
+    request.onload = function() {
+      console.log('this === request: ', this === request);
+      if (this.status >= 200 && this.status < 400) {
+        if (success) {
+          return success(this);
+        }
+      } else {
+        if (problem) {
+          return problem(this);
+        }
+      }
+    };
+    request.onerror = function() {
+      if (error) {
+        return error(this);
+      } else if (!error && problem) {
+        return problem(this);
+      }
+    };
+    request.send();
+    return request;
+  };
   _.html = function(newHtml, index) {
     var __element__, __elements__, element, i, j, len, len1, returnArr;
     if (newHtml !== void 0 && typeof newHtml !== "number") {
